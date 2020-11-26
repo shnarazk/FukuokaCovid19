@@ -14,7 +14,7 @@
 		C69A58C7256FDE610085AD68 /* FukuokaCOVID19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58C6256FDE610085AD68 /* FukuokaCOVID19Tests.swift */; };
 		C69A58D2256FDE610085AD68 /* FukuokaCOVID19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58D1256FDE610085AD68 /* FukuokaCOVID19UITests.swift */; };
 		C69A58E4256FDF340085AD68 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = C69A58E3256FDF340085AD68 /* CodableCSV */; };
-		C69A58E9256FDF780085AD68 /* FukuokaCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58E8256FDF780085AD68 /* FukuokaCSV.swift */; };
+		C69A58E9256FDF780085AD68 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58E8256FDF780085AD68 /* Patient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		C69A58CD256FDE610085AD68 /* FukuokaCOVID19UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FukuokaCOVID19UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69A58D1256FDE610085AD68 /* FukuokaCOVID19UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FukuokaCOVID19UITests.swift; sourceTree = "<group>"; };
 		C69A58D3256FDE610085AD68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C69A58E8256FDF780085AD68 /* FukuokaCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FukuokaCSV.swift; sourceTree = "<group>"; };
+		C69A58E8256FDF780085AD68 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 		C69A58B2256FDE600085AD68 /* FukuokaCOVID19 */ = {
 			isa = PBXGroup;
 			children = (
-				C69A58E8256FDF780085AD68 /* FukuokaCSV.swift */,
+				C69A58E8256FDF780085AD68 /* Patient.swift */,
 				C69A58B3256FDE600085AD68 /* FukuokaCOVID19App.swift */,
 				C69A58B5256FDE600085AD68 /* ContentView.swift */,
 				C69A58B7256FDE610085AD68 /* Assets.xcassets */,
@@ -274,7 +274,7 @@
 			files = (
 				C69A58B6256FDE600085AD68 /* ContentView.swift in Sources */,
 				C69A58B4256FDE600085AD68 /* FukuokaCOVID19App.swift in Sources */,
-				C69A58E9256FDF780085AD68 /* FukuokaCSV.swift in Sources */,
+				C69A58E9256FDF780085AD68 /* Patient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
