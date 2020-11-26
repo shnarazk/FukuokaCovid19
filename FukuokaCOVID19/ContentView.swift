@@ -9,8 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("Hello, world! \(covidData.count)")
+                .padding()
+            List {
+                ForEach(covidData) { p in
+                    HStack {
+                        Text("\(p.id): \(p.release_date), \(p.location), \(p.age), \(p.gender)")
+                    }
+                }
+            }
+        }
     }
 }
 

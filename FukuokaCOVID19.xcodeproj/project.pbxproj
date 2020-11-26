@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		C69A58BB256FDE610085AD68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69A58BA256FDE610085AD68 /* Preview Assets.xcassets */; };
 		C69A58C7256FDE610085AD68 /* FukuokaCOVID19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58C6256FDE610085AD68 /* FukuokaCOVID19Tests.swift */; };
 		C69A58D2256FDE610085AD68 /* FukuokaCOVID19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58D1256FDE610085AD68 /* FukuokaCOVID19UITests.swift */; };
+		C69A58E4256FDF340085AD68 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = C69A58E3256FDF340085AD68 /* CodableCSV */; };
+		C69A58E9256FDF780085AD68 /* FukuokaCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58E8256FDF780085AD68 /* FukuokaCSV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,7 @@
 		C69A58CD256FDE610085AD68 /* FukuokaCOVID19UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FukuokaCOVID19UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69A58D1256FDE610085AD68 /* FukuokaCOVID19UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FukuokaCOVID19UITests.swift; sourceTree = "<group>"; };
 		C69A58D3256FDE610085AD68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C69A58E8256FDF780085AD68 /* FukuokaCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FukuokaCSV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C69A58E4256FDF340085AD68 /* CodableCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +100,7 @@
 		C69A58B2256FDE600085AD68 /* FukuokaCOVID19 */ = {
 			isa = PBXGroup;
 			children = (
+				C69A58E8256FDF780085AD68 /* FukuokaCSV.swift */,
 				C69A58B3256FDE600085AD68 /* FukuokaCOVID19App.swift */,
 				C69A58B5256FDE600085AD68 /* ContentView.swift */,
 				C69A58B7256FDE610085AD68 /* Assets.xcassets */,
@@ -148,6 +153,9 @@
 			dependencies = (
 			);
 			name = FukuokaCOVID19;
+			packageProductDependencies = (
+				C69A58E3256FDF340085AD68 /* CodableCSV */,
+			);
 			productName = FukuokaCOVID19;
 			productReference = C69A58B0256FDE600085AD68 /* FukuokaCOVID19.app */;
 			productType = "com.apple.product-type.application";
@@ -219,6 +227,9 @@
 				Base,
 			);
 			mainGroup = C69A58A7256FDE600085AD68;
+			packageReferences = (
+				C69A58E2256FDF340085AD68 /* XCRemoteSwiftPackageReference "CodableCSV" */,
+			);
 			productRefGroup = C69A58B1256FDE600085AD68 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +274,7 @@
 			files = (
 				C69A58B6256FDE600085AD68 /* ContentView.swift in Sources */,
 				C69A58B4256FDE600085AD68 /* FukuokaCOVID19App.swift in Sources */,
+				C69A58E9256FDF780085AD68 /* FukuokaCSV.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +597,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C69A58E2256FDF340085AD68 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C69A58E3256FDF340085AD68 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C69A58E2256FDF340085AD68 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C69A58A8256FDE600085AD68 /* Project object */;
 }
