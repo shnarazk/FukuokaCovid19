@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct ContentView: View {
     var patients: [Patient]
     var body: some View {
         VStack {
-            Text("Hello, world! \(covidData.count)")
-                .padding()
-            LocationView(patients: groupByLocation(patients, threshold: 100))
+            LocationView(patients: groupByLocation(patients, threshold: 50))
             // PatientsView(patients: patients)
         }
     }
@@ -39,13 +38,27 @@ struct PatientsView: View {
 struct LocationView: View {
     var patients: [(String, [Patient])]
     var body: some View {
-        List {
-            ForEach(patients, id: \.self.0) { g in
-                HStack {
-                    Text("\(g.0): \(g.1.count)")
+        VStack {
+            GraphView(data: patients.map {(c, p) in (c, p.count)}, title: "--")
+        NavigationView {
+            List {
+                ForEach(patients, id: \.self.0) { g in
+                    NavigationLink(destination: PatientsView(patients: g.1)) {
+                        Text("\(g.0): \(g.1.count)")
+                    }
                 }
             }
+            .navigationTitle("都市別")
         }
+        }
+    }
+}
+
+struct GraphView: View {
+    var data: [(String, Int)]
+    var title: String
+    var body: some View {
+        BarChartView(data: ChartData(values: data), title: title, form: ChartForm.extraLarge, dropShadow: false)
     }
 }
 

@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "SwiftUICharts",
+        "repositoryURL": "https://github.com/shnarazk/ChartView",
+        "state": {
+          "branch": null,
+          "revision": "3fae6c3306a25e007b99c13e2195dbf933a4af49",
+          "version": null
+        }
+      },
+      {
         "package": "CodableCSV",
         "repositoryURL": "https://github.com/dehesa/CodableCSV",
         "state": {
