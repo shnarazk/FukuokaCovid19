@@ -102,8 +102,8 @@
 		C69A58B2256FDE600085AD68 /* FukuokaCOVID19 */ = {
 			isa = PBXGroup;
 			children = (
-				C69A58E8256FDF780085AD68 /* Patient.swift */,
 				C69A58B3256FDE600085AD68 /* FukuokaCOVID19App.swift */,
+				C69A58E8256FDF780085AD68 /* Patient.swift */,
 				C69A58B5256FDE600085AD68 /* ContentView.swift */,
 				C69A58B7256FDE610085AD68 /* Assets.xcassets */,
 				C69A58BC256FDE610085AD68 /* Info.plist */,
