@@ -13,13 +13,10 @@ struct ContentView: View {
     @State var mode: Int = 1
     var body: some View {
         VStack {
-            Text("福岡県COVID19データ(\(patients.last(where: { _ in true })!.release_date.to_str())更新)")
-                .font(.title)
-            HStack {
-                // GraphView(data: groupBy(patients, mapper: { p in p.release_month }).map {(c, p) in (c, p.count)}, title: "月別")
-                GraphView(data: groupBy(patients, mapper: { p in p.release_date.to_str() }).map {(c, p) in (c, p.count)}, title: "詳細")
-                GraphView(data: groupByLocation(patients, threshold: 50).map {(c, p) in (c, p.count)}, title: "地域別")
-            }
+            // GraphView(data: groupBy(patients, mapper: { p in p.release_month }).map {(c, p) in (c, p.count)}, title: "月別")
+            GraphView(data: mode == 1 ? groupBy(patients, mapper: { p in p.release_date.to_str() }).map {(c, p) in (c, p.count)}
+                        : groupByLocation(patients, threshold: 50).map {(c, p) in (c, p.count)},
+                      title: mode == 1 ? "詳細" : "地域別")
             .padding()
             Picker(selection: $mode, label: EmptyView(), content: {
                 Text("月別詳細").tag(1)
@@ -27,10 +24,8 @@ struct ContentView: View {
             })
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal, 10)
-            switch mode {
-            case 2: GroupView(patients: groupByLocation(patients, threshold: 50))
-            default: GroupView(patients: groupBy(patients, mapper: { p in p.release_month }))
-            }
+            GroupView(patients: mode == 2 ? groupByLocation(patients, threshold: 50) : groupBy(patients, mapper: { p in p.release_month }),
+                      title: "福岡県COVID19データ(\(patients.last(where: { _ in true })!.release_date.to_str())更新)")
             // PatientsView(patients: patients)
         }
     }
@@ -47,7 +42,8 @@ struct PatientsView: View {
     var body: some View {
         List {
             ForEach(patients) { p in
-                Text("\(p.id): \(p.release_date.to_str()) \(p.release_month) (\(p.elapsed)日前), \(p.location), \(p.age), \(p.gender)")
+                // p.release_mon    th
+                Text("\(p.id): \(p.release_date.to_str()) (\(p.elapsed)日前), \(p.location), \(p.age), \(p.gender)")
             }
         }
     }
@@ -55,6 +51,7 @@ struct PatientsView: View {
 
 struct GroupView: View {
     var patients: [(String, [Patient])]
+    var title: String
     var body: some View {
         VStack {
             // GraphView(data: patients.map {(c, p) in (c, p.count)}, title: "--")
@@ -62,12 +59,17 @@ struct GroupView: View {
                 List {
                     ForEach(patients, id: \.self.0) { g in
                         NavigationLink(destination: PatientsView(patients: g.1)) {
-                            Text("\(g.0): \(g.1.count)")
+                            HStack {
+                                Image(systemName: "arrow.forward.circle.fill")
+                                    .padding(.trailing, 10)
+                                Text("\(g.0) (\(g.1.count)人)")
+                                    .foregroundColor(1000 <= g.1.count ? .primary : .secondary)
+                            }
                         }
                     }
                 }
-                .navigationTitle("都市別")
             }
+            .navigationTitle(title)
         }
     }
 }
@@ -77,7 +79,7 @@ struct GraphView: View {
     var title: String
     var body: some View {
         BarChartView(data: ChartData(values: data), title: title,
-                     form: CGSize(width: 800, height: 250), dropShadow: true, valueSpecifier: "%.0f人"
+                     form: CGSize(width: 1000, height: 250), dropShadow: true, valueSpecifier: "%.0f人"
         )
     }
 }
