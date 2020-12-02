@@ -1,3 +1,3 @@
 # FukuokaCovid19
 
-![](https://user-images.githubusercontent.com/997855/100835744-6f886e80-34b1-11eb-98fa-ca9560a9f8c4.png)
+![](https://user-images.githubusercontent.com/997855/100838671-369ec880-34b6-11eb-95d4-00454170a006.png)
