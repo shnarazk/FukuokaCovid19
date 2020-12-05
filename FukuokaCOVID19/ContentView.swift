@@ -12,20 +12,32 @@ struct ContentView: View {
     var patients: [Patient]
     @State var mode: Int = 1
     var body: some View {
+        let groupByDate = groupBy(patients, mapper: { $0.release_date.to_str() })
+        let groupByArea = groupByLocation(patients, threshold: 50)
+        let title = "福岡県COVID19データ(\(patients.last(where: { _ in true })!.release_date.to_str())更新)"
         VStack {
             // GraphView(data: groupBy(patients, mapper: { p in p.release_month }).map {(c, p) in (c, p.count)}, title: "月別")
-            GraphView(data: mode == 1 ? groupBy(patients, mapper: { p in p.release_date.to_str() }).map {(c, p) in (c, p.count)}
-                        : groupByLocation(patients, threshold: 50).map {(c, p) in (c, p.count)},
-                      title: mode == 1 ? "詳細" : "地域別")
-            .padding()
+            // GraphView(data: pGroup.map {(c, p) in (c, p.count)}, title: mode == 1 ? "詳細" : "地域別")
+            GeometryReader { s in
+                if mode == 1 {
+                    GraphView(data: groupByDate.map {(c, p) in (c, p.count)}, title: "詳細", size: s.size)
+                        .padding(.vertical, 2)
+                } else {
+                    GraphView(data: groupByArea.map {(c, p) in (c, p.count)}, title: "地域別", size: s.size)
+                        .padding(.vertical, 2)
+                }
+            }
             Picker(selection: $mode, label: EmptyView(), content: {
                 Text("月別詳細").tag(1)
                 Text("地域別詳細").tag(2)
             })
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal, 10)
-            GroupView(patients: mode == 2 ? groupByLocation(patients, threshold: 50) : groupBy(patients, mapper: { p in p.release_month }),
-                      title: "福岡県COVID19データ(\(patients.last(where: { _ in true })!.release_date.to_str())更新)")
+            if mode == 1 {
+                GroupView(patients: groupByDate, title: title)
+            } else {
+                GroupView(patients: groupByArea, title: title)
+            }
             // PatientsView(patients: patients)
         }
     }
@@ -77,10 +89,12 @@ struct GroupView: View {
 struct GraphView: View {
     var data: [(String, Int)]
     var title: String
+    var size: CGSize
     var body: some View {
         BarChartView(data: ChartData(values: data), title: title,
-                     form: CGSize(width: 1000, height: 250), dropShadow: true, valueSpecifier: "%.0f人"
+                     form: CGSize(width: size.width - 8, height: size.height - 8), dropShadow: true, valueSpecifier: "%.0f人"
         )
+        .padding(.leading, 4)
     }
 }
 
