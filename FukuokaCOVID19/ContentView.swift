@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var mode: Int = 1
     var body: some View {
         let groupByDate = groupBy(patients, mapper: { $0.release_date.to_str() })
+        let groupByMonth = groupBy(patients, mapper: { $0.release_month })
         let groupByArea = groupByLocation(patients, threshold: 50)
         let title = "福岡県COVID19データ(\(patients.last(where: { _ in true })!.release_date.to_str())更新)"
         VStack {
@@ -34,7 +35,7 @@ struct ContentView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal, 10)
             if mode == 1 {
-                GroupView(patients: groupByDate, title: title)
+                GroupView(patients: groupByMonth, title: title)
             } else {
                 GroupView(patients: groupByArea, title: title)
             }
