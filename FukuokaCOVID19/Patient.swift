@@ -10,8 +10,9 @@ import CodableCSV
 
 var covidData: [Patient] = loadData()
 
-let url = URL(string: "https://ckan.open-governmentdata.org/dataset/8a9688c2-7b9f-4347-ad6e-de3b339ef740/resource/c27769a2-8634-47aa-9714-7e21c4038dd4/download/400009_pref_fukuoka_covid19_patients.csv")!
-
+let url = URL(string:
+                "https://ckan.open-governmentdata.org/dataset/8a9688c2-7b9f-4347-ad6e-de3b339ef740/resource/765d78d5-6754-43eb-850e-a658b086469b/download/400009_pref_fukuoka_covid19_patients.csv"
+)!
 func loadData() -> [Patient] {
     if let data = try? Data(contentsOf: url) {
         do {
