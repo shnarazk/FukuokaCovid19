@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "SwiftUICharts",
-        "repositoryURL": "https://github.com/shnarazk/ChartView",
+        "repositoryURL": "https://github.com/AppPear/ChartView",
         "state": {
-          "branch": null,
-          "revision": "3fae6c3306a25e007b99c13e2195dbf933a4af49",
+          "branch": "master",
+          "revision": "9115a992c91fa19cbb4f2241084240d38654a1fc",
           "version": null
         }
       },

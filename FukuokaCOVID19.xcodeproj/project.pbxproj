@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C623B571263E474500863276 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C623B570263E474500863276 /* SwiftUICharts */; };
 		C69A58B4256FDE600085AD68 /* FukuokaCOVID19App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58B3256FDE600085AD68 /* FukuokaCOVID19App.swift */; };
 		C69A58B6256FDE600085AD68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58B5256FDE600085AD68 /* ContentView.swift */; };
 		C69A58B8256FDE610085AD68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69A58B7256FDE610085AD68 /* Assets.xcassets */; };
@@ -15,7 +16,6 @@
 		C69A58D2256FDE610085AD68 /* FukuokaCOVID19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58D1256FDE610085AD68 /* FukuokaCOVID19UITests.swift */; };
 		C69A58E4256FDF340085AD68 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = C69A58E3256FDF340085AD68 /* CodableCSV */; };
 		C69A58E9256FDF780085AD68 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58E8256FDF780085AD68 /* Patient.swift */; };
-		C69A5901257068480085AD68 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C69A5900257068480085AD68 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C69A58E4256FDF340085AD68 /* CodableCSV in Frameworks */,
-				C69A5901257068480085AD68 /* SwiftUICharts in Frameworks */,
+				C623B571263E474500863276 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +157,7 @@
 			name = FukuokaCOVID19;
 			packageProductDependencies = (
 				C69A58E3256FDF340085AD68 /* CodableCSV */,
-				C69A5900257068480085AD68 /* SwiftUICharts */,
+				C623B570263E474500863276 /* SwiftUICharts */,
 			);
 			productName = FukuokaCOVID19;
 			productReference = C69A58B0256FDE600085AD68 /* FukuokaCOVID19.app */;
@@ -232,7 +232,7 @@
 			mainGroup = C69A58A7256FDE600085AD68;
 			packageReferences = (
 				C69A58E2256FDF340085AD68 /* XCRemoteSwiftPackageReference "CodableCSV" */,
-				C69A58FF257068480085AD68 /* XCRemoteSwiftPackageReference "ChartView" */,
+				C623B56F263E474500863276 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = C69A58B1256FDE600085AD68 /* Products */;
 			projectDirPath = "";
@@ -606,6 +606,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C623B56F263E474500863276 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C69A58E2256FDF340085AD68 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dehesa/CodableCSV";
@@ -614,26 +622,18 @@
 				minimumVersion = 0.6.4;
 			};
 		};
-		C69A58FF257068480085AD68 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/shnarazk/ChartView";
-			requirement = {
-				kind = revision;
-				revision = 3fae6c3306a25e007b99c13e2195dbf933a4af49;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C623B570263E474500863276 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C623B56F263E474500863276 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
 		C69A58E3256FDF340085AD68 /* CodableCSV */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C69A58E2256FDF340085AD68 /* XCRemoteSwiftPackageReference "CodableCSV" */;
 			productName = CodableCSV;
-		};
-		C69A5900257068480085AD68 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C69A58FF257068480085AD68 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
