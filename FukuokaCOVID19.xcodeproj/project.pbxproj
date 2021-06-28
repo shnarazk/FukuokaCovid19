@@ -619,7 +619,7 @@
 			repositoryURL = "https://github.com/dehesa/CodableCSV";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.4;
+				minimumVersion = 0.6.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
