@@ -34,6 +34,7 @@ struct ContentView: View {
             })
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal, 10)
+            .background(.regularMaterial)
             if mode == 1 {
                 GroupView(patients: groupByMonth, title: title)
             } else {
