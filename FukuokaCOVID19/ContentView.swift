@@ -8,31 +8,33 @@
 import SwiftUI
 import SwiftUICharts
 
+enum Mode {
+    case ByAge
+    case ByArea
+    case ByData
+}
+
 struct ContentView: View {
     var patients: [Patient]
-    @State var mode: Int = 1
+    @State var mode: Mode = .ByData
     var body: some View {
         let groupByDate = groupBy(patients, mapper: { $0.release_date.to_str() })
-        let groupByMonth = groupBy(patients, mapper: { $0.release_month })
+        let groupByMonth = groupBy(patients, mapper: { $0.release_month }, order: {$0.0 > $1.0 })
         let groupByArea = groupByLocation(patients, threshold: 50)
         let groupByAge = groupBy(patients, mapper: { $0.age })
         let title = "福岡県COVID19データ(\(patients.last(where: { _ in true })!.release_date.to_str())更新)"
         VStack {
-            // GraphView(data: groupBy(patients, mapper: { p in p.release_month }).map {(c, p) in (c, p.count)}, title: "月別")
-            // GraphView(data: pGroup.map {(c, p) in (c, p.count)}, title: mode == 1 ? "詳細" : "地域別")
             GeometryReader { s in
                 switch mode {
-                case 2:
-                    GraphView(data: groupByArea.map {(c, p) in (c, p.count)}, title: "地域別", size: s.size)
-                        .padding(.vertical, 2)
-                case 3:
+                case .ByAge:
                     GraphView(data: groupByAge.map {(c, p) in (c, p.count)}, title: "年代別", size: s.size)
-                        .padding(.vertical, 2)
-                default:
+                case .ByArea:
+                    GraphView(data: groupByArea.map {(c, p) in (c, p.count)}, title: "地域別", size: s.size)
+                case .ByData:
                     GraphView(data: groupByDate.map {(c, p) in (c, p.count)}, title: "詳細", size: s.size)
-                        .padding(.vertical, 2)
                 }
             }
+            .padding(.vertical, 2)
             Picker(selection: $mode, label: EmptyView(), content: {
                 Text("月別詳細").tag(1)
                 Text("地域別詳細").tag(2)
@@ -42,14 +44,13 @@ struct ContentView: View {
             .padding(.horizontal, 10)
             .background(.regularMaterial)
             switch mode {
-            case 2:
+            case .ByAge:
+                GroupView(patients: groupByAge, title: title)
+            case .ByArea:
                 GroupView(patients: groupByArea, title: title)
-            case 3:
-                GroupView(patients: groupByAge, title: title) 
-            default:
+            case .ByData:
                 GroupView(patients: groupByMonth, title: title)
             }
-            // PatientsView(patients: patients)
         }
     }
 }
@@ -57,8 +58,9 @@ struct ContentView: View {
 struct ErrorView: View {
     var body: some View {
         VStack {
+            Spacer()
             Text("Can't load data") 
-                .padding()
+            Spacer()
         }
     }
 }
