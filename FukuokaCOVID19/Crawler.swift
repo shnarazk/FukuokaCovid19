@@ -20,12 +20,12 @@ private var pagesToVisit: Set<URL> = [startUrl]
 // Crawler Core
 func crawl() {
     guard visitedPages.count <= maximumPagesToVisit else {
-        print("🏁 Reached max number of pages to visit")
+        // print("🏁 Reached max number of pages to visit")
         semaphore.signal()
         return
     }
     guard let pageToVisit = pagesToVisit.popFirst() else {
-        print("🏁 No more pages to visit")
+        // print("🏁 No more pages to visit")
         semaphore.signal()
         return
     }
@@ -51,7 +51,7 @@ private func visit(page url: URL) {
             let document = String(data: data, encoding: .utf8) else { return }
         parse(document: document, url: url)
     }
-    print("🔎 Visiting page: \(url)")
+    // print("🔎 Visiting page: \(url)")
     task.resume()
 }
 
@@ -61,7 +61,7 @@ private func parse(document: String, url: URL) {
         let matches = regex.matches(in: document, options: [], range: NSRange(document.startIndex..<document.endIndex, in: document))
         return matches.compactMap { m in URL(string: String(document[Range(m.range, in: document)!])) }
     }
-    print(collectLinks())
+    // print(collectLinks())
     collectLinks().forEach { pagesToVisit.insert($0) }
 }
 
