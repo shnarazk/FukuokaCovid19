@@ -11,15 +11,19 @@ import CodableCSV
 var covidData: [Patient] = loadData()
 
 // https://ckan.open-governmentdata.org/dataset/401000_pref_fukuoka_covid19_patients
-let url = URL(string:
+//
+let _url = URL(string:
                 "https://ckan.open-governmentdata.org/dataset/8a9688c2-7b9f-4347-ad6e-de3b339ef740/resource/f3bc85a4-4192-42d7-9552-e28c581a2b8e/download/400009_pref_fukuoka_covid19_patients1.csv")!
 func loadData() -> [Patient] {
+    guard let url = find_csv() else {
+        return []
+    }
     if let data = try? Data(contentsOf: url) {
         do {
             let parsed = try CSVReader.decode(input: data)
             var result: [Patient] = []
             for record in parsed.dropFirst() {
-                let data: Patient = Patient(id: record[0],  // No.
+                let data: Patient = Patient(id: record[0],  // No.
                                             code: record[1],    // 全国地方公共団体コード
                                             pref: record[2],    // 都道県名
                                             release_date: parseDate(record[3]), // 公表_年月日
@@ -36,7 +40,6 @@ func loadData() -> [Patient] {
             return result
         } catch let error {
             print(error)
-            return []
         }
     }
     return []

@@ -15,39 +15,61 @@ struct ContentView: View {
         let groupByDate = groupBy(patients, mapper: { $0.release_date.to_str() })
         let groupByMonth = groupBy(patients, mapper: { $0.release_month })
         let groupByArea = groupByLocation(patients, threshold: 50)
+        let groupByAge = groupBy(patients, mapper: { $0.age })
         let title = "福岡県COVID19データ(\(patients.last(where: { _ in true })!.release_date.to_str())更新)"
         VStack {
             // GraphView(data: groupBy(patients, mapper: { p in p.release_month }).map {(c, p) in (c, p.count)}, title: "月別")
             // GraphView(data: pGroup.map {(c, p) in (c, p.count)}, title: mode == 1 ? "詳細" : "地域別")
             GeometryReader { s in
-                if mode == 1 {
-                    GraphView(data: groupByDate.map {(c, p) in (c, p.count)}, title: "詳細", size: s.size)
-                        .padding(.vertical, 2)
-                } else {
+                switch mode {
+                case 2:
                     GraphView(data: groupByArea.map {(c, p) in (c, p.count)}, title: "地域別", size: s.size)
+                        .padding(.vertical, 2)
+                case 3:
+                    GraphView(data: groupByAge.map {(c, p) in (c, p.count)}, title: "年代別", size: s.size)
+                        .padding(.vertical, 2)
+                default:
+                    GraphView(data: groupByDate.map {(c, p) in (c, p.count)}, title: "詳細", size: s.size)
                         .padding(.vertical, 2)
                 }
             }
             Picker(selection: $mode, label: EmptyView(), content: {
                 Text("月別詳細").tag(1)
                 Text("地域別詳細").tag(2)
+                Text("年代別詳細").tag(3)
             })
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal, 10)
             .background(.regularMaterial)
-            if mode == 1 {
-                GroupView(patients: groupByMonth, title: title)
-            } else {
+            switch mode {
+            case 2:
                 GroupView(patients: groupByArea, title: title)
+            case 3:
+                GroupView(patients: groupByAge, title: title) 
+            default:
+                GroupView(patients: groupByMonth, title: title)
             }
             // PatientsView(patients: patients)
         }
     }
 }
 
+struct ErrorView: View {
+    var body: some View {
+        VStack {
+            Text("Can't load data") 
+                .padding()
+        }
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(patients: covidData)
+        if !covidData.isEmpty {
+            ContentView(patients: covidData)
+        } else {   
+            ErrorView()
+        }
     }
 }
 

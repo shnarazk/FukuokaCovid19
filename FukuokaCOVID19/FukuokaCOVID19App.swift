@@ -11,7 +11,11 @@ import SwiftUI
 struct FukuokaCOVID19App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(patients: covidData)
+            if !covidData.isEmpty {
+                ContentView(patients: covidData)
+            } else {
+                ErrorView()
+            }
         }
     }
 }
