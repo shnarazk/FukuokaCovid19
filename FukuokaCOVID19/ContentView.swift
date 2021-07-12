@@ -8,21 +8,21 @@
 import SwiftUI
 import SwiftUICharts
 
-enum Mode {
+enum Mode: Hashable {
     case ByAge
     case ByArea
-    case ByData
+    case ByDate
 }
 
 struct ContentView: View {
     var patients: [Patient]
-    @State var mode: Mode = .ByData
+    @State var mode: Mode = .ByDate
     var body: some View {
         let groupByDate = groupBy(patients, mapper: { $0.release_date.to_str() })
         let groupByMonth = groupBy(patients, mapper: { $0.release_month }, order: {$0.0 > $1.0 })
         let groupByArea = groupByLocation(patients, threshold: 50)
         let groupByAge = groupBy(patients, mapper: { $0.age })
-        let title = "福岡県COVID19データ(\(patients.last(where: { _ in true })!.release_date.to_str())更新)"
+        let title = "福岡県COVID19データ(\(patients.isEmpty ? "" : patients.last(where: { _ in true })!.release_date.to_str())更新)"
         VStack {
             GeometryReader { s in
                 switch mode {
@@ -30,15 +30,15 @@ struct ContentView: View {
                     GraphView(data: groupByAge.map {(c, p) in (c, p.count)}, title: "年代別", size: s.size)
                 case .ByArea:
                     GraphView(data: groupByArea.map {(c, p) in (c, p.count)}, title: "地域別", size: s.size)
-                case .ByData:
+                case .ByDate:
                     GraphView(data: groupByDate.map {(c, p) in (c, p.count)}, title: "詳細", size: s.size)
                 }
             }
             .padding(.vertical, 2)
             Picker(selection: $mode, label: EmptyView(), content: {
-                Text("月別詳細").tag(1)
-                Text("地域別詳細").tag(2)
-                Text("年代別詳細").tag(3)
+                Text("月別詳細").tag(Mode.ByDate)
+                Text("地域別詳細").tag(Mode.ByArea)
+                Text("年代別詳細").tag(Mode.ByAge)
             })
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal, 10)
@@ -48,9 +48,12 @@ struct ContentView: View {
                 GroupView(patients: groupByAge, title: title)
             case .ByArea:
                 GroupView(patients: groupByArea, title: title)
-            case .ByData:
+            case .ByDate:
                 GroupView(patients: groupByMonth, title: title)
             }
+        }
+        .alert(isPresented: .constant(patients.isEmpty)) {
+            Alert(title: Text("No dataset found"), message: Text("Run tomorrow"), dismissButton: .default(Text("OK")))
         }
     }
 }
@@ -67,11 +70,11 @@ struct ErrorView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        if !covidData.isEmpty {
-            ContentView(patients: covidData)
-        } else {   
-            ErrorView()
-        }
+        ContentView(patients: covidData)
+        // if covidData.isEmpty {
+        // Alert(title: "No Data", message: "please run next day", dismissButton: .default(Text("OK")))
+        // ErrorView()
+        // }
     }
 }
 
@@ -125,6 +128,10 @@ struct GraphView: View {
 }
 
 func groupBy(_ list: [Patient], mapper: (Patient) -> String, order: ((String, [Patient]), (String, [Patient])) -> Bool = {$0.0 < $1.0 }) -> [(String, [Patient])] {
+    var result: [(String, [Patient])] = []
+    if list.isEmpty {
+        return result
+    }
     var dict: [String: [Patient]] = [:]
     var unkonwn: [Patient] = []
     for p in list {
@@ -138,15 +145,15 @@ func groupBy(_ list: [Patient], mapper: (Patient) -> String, order: ((String, [P
         }
         dict[key]!.append(p)
     }
-    var list: [(String, [Patient])] = []
+
     for i in dict {
-        list.append((i.key, i.value))
+        result.append((i.key, i.value))
     }
-    list.sort(by: order)
+    result.sort(by: order)
     if 0 < unkonwn.count {
-        list.append(("不明", unkonwn))
+        result.append(("不明", unkonwn))
     }
-    return list
+    return result
 }
 
 func groupByLocation(_ list: [Patient], threshold: Int) -> [(String, [Patient])] {
