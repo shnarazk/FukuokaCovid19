@@ -96,7 +96,7 @@ struct GroupView: View {
             NavigationView {
                 List {
                     ForEach(patients, id: \.self.0) { g in
-                        NavigationLink(destination: PatientsView(patients: g.1)) {
+                        NavigationLink(destination: PatientsView(patients: g.1.reversed())) {
                             HStack {
                                 Image(systemName: "arrow.forward.circle.fill")
                                     .padding(.trailing, 10)
