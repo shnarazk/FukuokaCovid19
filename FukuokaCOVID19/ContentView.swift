@@ -42,7 +42,7 @@ struct ContentView: View {
             })
             .pickerStyle(SegmentedPickerStyle())
             .padding(.horizontal, 10)
-            .background(.regularMaterial)
+            //.background(.regularMaterial)
             switch mode {
             case .ByAge:
                 GroupView(patients: groupByAge, title: title)
