@@ -13,7 +13,6 @@
 		C69A58B8256FDE610085AD68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69A58B7256FDE610085AD68 /* Assets.xcassets */; };
 		C69A58BB256FDE610085AD68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69A58BA256FDE610085AD68 /* Preview Assets.xcassets */; };
 		C69A58C7256FDE610085AD68 /* FukuokaCOVID19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58C6256FDE610085AD68 /* FukuokaCOVID19Tests.swift */; };
-		C69A58D2256FDE610085AD68 /* FukuokaCOVID19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58D1256FDE610085AD68 /* FukuokaCOVID19UITests.swift */; };
 		C69A58E4256FDF340085AD68 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = C69A58E3256FDF340085AD68 /* CodableCSV */; };
 		C69A58E9256FDF780085AD68 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A58E8256FDF780085AD68 /* Patient.swift */; };
 		C69C56612699EBE7001FFDBD /* Crawler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C56602699EBE7001FFDBD /* Crawler.swift */; };
@@ -21,13 +20,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		C69A58C3256FDE610085AD68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C69A58A8256FDE600085AD68 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C69A58AF256FDE600085AD68;
-			remoteInfo = FukuokaCOVID19;
-		};
-		C69A58CE256FDE610085AD68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C69A58A8256FDE600085AD68 /* Project object */;
 			proxyType = 1;
@@ -47,9 +39,6 @@
 		C69A58C2256FDE610085AD68 /* FukuokaCOVID19Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FukuokaCOVID19Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69A58C6256FDE610085AD68 /* FukuokaCOVID19Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FukuokaCOVID19Tests.swift; sourceTree = "<group>"; };
 		C69A58C8256FDE610085AD68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C69A58CD256FDE610085AD68 /* FukuokaCOVID19UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FukuokaCOVID19UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C69A58D1256FDE610085AD68 /* FukuokaCOVID19UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FukuokaCOVID19UITests.swift; sourceTree = "<group>"; };
-		C69A58D3256FDE610085AD68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C69A58E8256FDF780085AD68 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		C69C56602699EBE7001FFDBD /* Crawler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crawler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,13 +60,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C69A58CA256FDE610085AD68 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -86,7 +68,6 @@
 			children = (
 				C69A58B2256FDE600085AD68 /* FukuokaCOVID19 */,
 				C69A58C5256FDE610085AD68 /* FukuokaCOVID19Tests */,
-				C69A58D0256FDE610085AD68 /* FukuokaCOVID19UITests */,
 				C69A58B1256FDE600085AD68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,7 +77,6 @@
 			children = (
 				C69A58B0256FDE600085AD68 /* FukuokaCOVID19.app */,
 				C69A58C2256FDE610085AD68 /* FukuokaCOVID19Tests.xctest */,
-				C69A58CD256FDE610085AD68 /* FukuokaCOVID19UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,15 +111,6 @@
 				C69A58C8256FDE610085AD68 /* Info.plist */,
 			);
 			path = FukuokaCOVID19Tests;
-			sourceTree = "<group>";
-		};
-		C69A58D0256FDE610085AD68 /* FukuokaCOVID19UITests */ = {
-			isa = PBXGroup;
-			children = (
-				C69A58D1256FDE610085AD68 /* FukuokaCOVID19UITests.swift */,
-				C69A58D3256FDE610085AD68 /* Info.plist */,
-			);
-			path = FukuokaCOVID19UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,24 +155,6 @@
 			productReference = C69A58C2256FDE610085AD68 /* FukuokaCOVID19Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C69A58CC256FDE610085AD68 /* FukuokaCOVID19UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C69A58DC256FDE610085AD68 /* Build configuration list for PBXNativeTarget "FukuokaCOVID19UITests" */;
-			buildPhases = (
-				C69A58C9256FDE610085AD68 /* Sources */,
-				C69A58CA256FDE610085AD68 /* Frameworks */,
-				C69A58CB256FDE610085AD68 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C69A58CF256FDE610085AD68 /* PBXTargetDependency */,
-			);
-			name = FukuokaCOVID19UITests;
-			productName = FukuokaCOVID19UITests;
-			productReference = C69A58CD256FDE610085AD68 /* FukuokaCOVID19UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -215,10 +168,6 @@
 						CreatedOnToolsVersion = 12.2;
 					};
 					C69A58C1256FDE610085AD68 = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = C69A58AF256FDE600085AD68;
-					};
-					C69A58CC256FDE610085AD68 = {
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = C69A58AF256FDE600085AD68;
 					};
@@ -243,7 +192,6 @@
 			targets = (
 				C69A58AF256FDE600085AD68 /* FukuokaCOVID19 */,
 				C69A58C1256FDE610085AD68 /* FukuokaCOVID19Tests */,
-				C69A58CC256FDE610085AD68 /* FukuokaCOVID19UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -259,13 +207,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C69A58C0256FDE610085AD68 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C69A58CB256FDE610085AD68 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -294,14 +235,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C69A58C9256FDE610085AD68 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C69A58D2256FDE610085AD68 /* FukuokaCOVID19UITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -309,11 +242,6 @@
 			isa = PBXTargetDependency;
 			target = C69A58AF256FDE600085AD68 /* FukuokaCOVID19 */;
 			targetProxy = C69A58C3256FDE610085AD68 /* PBXContainerItemProxy */;
-		};
-		C69A58CF256FDE610085AD68 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C69A58AF256FDE600085AD68 /* FukuokaCOVID19 */;
-			targetProxy = C69A58CE256FDE610085AD68 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -369,7 +297,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -424,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -452,7 +380,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_BUNDLE_IDENTIFIER = shnarazk.FukuokaCOVID19;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -477,7 +405,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_BUNDLE_IDENTIFIER = shnarazk.FukuokaCOVID19;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -498,7 +426,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_BUNDLE_IDENTIFIER = shnarazk.FukuokaCOVID19Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -520,51 +448,11 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_BUNDLE_IDENTIFIER = shnarazk.FukuokaCOVID19Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FukuokaCOVID19.app/Contents/MacOS/FukuokaCOVID19";
-			};
-			name = Release;
-		};
-		C69A58DD256FDE610085AD68 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = S47U494BM3;
-				INFOPLIST_FILE = FukuokaCOVID19UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = shnarazk.FukuokaCOVID19UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = FukuokaCOVID19;
-			};
-			name = Debug;
-		};
-		C69A58DE256FDE610085AD68 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = S47U494BM3;
-				INFOPLIST_FILE = FukuokaCOVID19UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = shnarazk.FukuokaCOVID19UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = FukuokaCOVID19;
 			};
 			name = Release;
 		};
@@ -594,15 +482,6 @@
 			buildConfigurations = (
 				C69A58DA256FDE610085AD68 /* Debug */,
 				C69A58DB256FDE610085AD68 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C69A58DC256FDE610085AD68 /* Build configuration list for PBXNativeTarget "FukuokaCOVID19UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C69A58DD256FDE610085AD68 /* Debug */,
-				C69A58DE256FDE610085AD68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
