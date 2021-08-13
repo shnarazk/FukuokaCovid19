@@ -18,8 +18,8 @@ struct ContentView: View {
     var patients: [Patient]
     @State var mode: Mode = .ByDate
     var body: some View {
-        let groupByDate = groupBy(patients, mapper: { $0.release_date.to_str() })
-        let groupByMonth = groupBy(patients, mapper: { $0.release_month }, order: {$0.0 > $1.0 })
+        let groupByDate = groupBy(patients.filter({ $0.elapsed < 356}), mapper: { $0.release_date.to_str() })
+        let groupByMonth = groupBy(patients.filter({ $0.elapsed < 356}), mapper: { $0.release_month }, order: {$0.0 > $1.0 })
         let groupByArea = groupByLocation(patients, threshold: 50)
         let groupByAge = groupBy(patients, mapper: { $0.age })
         let title = "福岡県COVID19データ(\(patients.isEmpty ? "" : patients.last(where: { _ in true })!.release_date.to_str())更新)"
